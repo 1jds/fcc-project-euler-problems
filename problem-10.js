@@ -2,6 +2,9 @@
 // The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
 // Find the sum of all the primes below n.
 
+// Thanks to Theodore John.S for the optimised prime checker function:
+// https://medium.com/@stheodorejohn/determining-prime-numbers-in-javascript-logic-and-code-optimization-14e02e1d9cad#:~:text=Simple%20Code%20Snippet%3A&text=log(%60%24%7Bnumber%7D%20is,must%20be%20greater%20than%201.
+
 function isPrimeNumberOptimised(n) {
   if (n < 2) {
     return false;
