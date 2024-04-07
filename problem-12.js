@@ -35,7 +35,6 @@ function divisibleTriangleNumber(n) {
   let greatestNumberOfDivisorsSoFar = 1;
   let currTriangleNum = 1;
   let currNumberForTriangling = 1;
-
   while (greatestNumberOfDivisorsSoFar < n) {
     currTriangleNum = sumIntsToN(currNumberForTriangling);
     greatestNumberOfDivisorsSoFar = findNumberOfDivisors(currTriangleNum);
