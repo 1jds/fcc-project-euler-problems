@@ -1,24 +1,29 @@
-// Here we get rid of all of the tree stuff, and just do some maths...
-// It works up until a point, when the computer say 'No!'
+// A maths approach...
+// n!
+// -------
+// k!(n-k)!
+// "The number of lattice paths from (0,0) to (n,k) is equal to the
+// binomial coefficient (n + k)  <-- meant to be one big bracket here
+//                      (  n  )  <-- meant to be one big bracket here" (https://en.wikipedia.org/wiki/Lattice_path)
 
-let count = 0;
-
-function leafCount(limit, x = 0, y = 0) {
-  if (x === limit && y === limit) {
-    count++;
-    return;
+function determineFactorial(n) {
+  let result = n;
+  for (let i = n - 1; i > 0; i--) {
+    result *= i;
   }
-  if (y < limit) {
-    leafCount(limit, x, y + 1);
-  }
-  if (x < limit) {
-    leafCount(limit, x + 1, y);
-  }
+  return result;
 }
 
-// leafCount(2);
-// leafCount(4);
-leafCount(9);
-// leafCount(20); Won't work, because it's too many recursive calls...
+function latticePaths(gridSize) {
+  const n = gridSize + gridSize;
+  let numerator = determineFactorial(n);
+  let denominator =
+    determineFactorial(gridSize) * determineFactorial(n - gridSize);
+  let result = numerator / denominator;
+  return Math.trunc(result);
+}
 
-console.log(count);
+console.log(latticePaths(2));
+console.log(latticePaths(4));
+console.log(latticePaths(9));
+console.log(latticePaths(20));
