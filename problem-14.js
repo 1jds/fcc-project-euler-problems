@@ -39,7 +39,7 @@ function longestCollatzSequence(limit) {
 }
 
 console.log(
-  "The starting number under limit which produces the longest chain is..."
+  "For the given 'limit', the starting number under that limit which produces the longest chain is..."
 );
 console.log("14 ...", longestCollatzSequence(14));
 console.log("5847 ...", longestCollatzSequence(5847));
