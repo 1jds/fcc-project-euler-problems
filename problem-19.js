@@ -45,7 +45,6 @@ const isLeapYear = (yearToTest) => {
 
 function countingSundays(firstYear, lastYear) {
   let totalSundays = 0;
-  let totalDays = 0;
   const d = new Date(`January 1, ${firstYear}`);
   let dayofWeek = d.getDay(); // The getDay() method returns the day of the week (0 to 6) of a date. Sunday = 0, Monday = 1, etc.
 
@@ -53,25 +52,16 @@ function countingSundays(firstYear, lastYear) {
   let currMonth = 1; // 1 === Jan, etc.
   let currYear = firstYear;
 
-  // let isLeapYear = isLeapYear(currYear);
-  // let isFirstDayofMonth = true;
-
   while (currYear < lastYear + 1) {
-    totalDays++;
-    console.log(currDay, currMonth, currYear, dayofWeek);
     if (dayofWeek === 0 && currDay === 1) {
-      // console.log("This Sunday is...", currYear, currMonth, currDay, dayofWeek);
       totalSundays++;
     }
     if (currMonth === 12 && currDay === 31) {
-      currDay = 1;
+      currDay = 0; // set to zero instead of 1 (which would make more sense) because it will be incremented by next if clause since it's the last day of the month. Saves an extra nesting layer
       currMonth = 1;
       currYear++;
     }
     if (currDay >= monthsLookupTable[currMonth]) {
-      if (currMonth === 12) {
-        // fall through and do nothing, because the previous if clause has already updated the day and month, but we need to execute the dayofWeek update below
-      }
       if (currMonth === 2 && isLeapYear(currYear) && currDay === 28) {
         currDay++;
       } else {
@@ -87,9 +77,7 @@ function countingSundays(firstYear, lastYear) {
       dayofWeek++;
     }
   }
-
-  console.log(totalDays);
   return totalSundays;
 }
 
-console.log(countingSundays(1901, 2000));
+countingSundays(1943, 1946);
