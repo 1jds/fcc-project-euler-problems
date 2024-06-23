@@ -80,4 +80,4 @@ function countingSundays(firstYear, lastYear) {
   return totalSundays;
 }
 
-countingSundays(1943, 1946);
+console.log(countingSundays(1943, 1946));
